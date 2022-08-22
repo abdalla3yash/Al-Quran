@@ -1,0 +1,18 @@
+{
+    "language": "Language",
+    "theme": "Theme",
+    "dark":"try Dark Mode",
+    "light":"try Light Mode",
+    "english":"English",
+    "arabic":"Arabic",
+    "title":"Al-Quran",
+    "azkar":"azkar",
+    "tasbeeh":"Tasbeeh",
+    "surahName":"Surah Name",
+    "numOfVerses":"Verses Number",
+    "verse":"verse",
+    "numOfTasbeehat":"Tasbeehat Number",
+    "radio":"Quran Radio",
+    "hadith":"Hadith",
+    "nothingtoshow":"Nothing to show!"
+    }
