@@ -20,11 +20,12 @@ class RadioScreen extends StatefulWidget {
 }
 
 class _RadioScreenState extends State<RadioScreen> {
+  final RadioPlayer _radioPlayer = RadioPlayer();
+  bool isPlaying = false;
+  List<String>? metadata;
+
   late Future<RadioResponse> radioStations;
   late String radioUrl;
-  bool isPlaying = false;
-  RadioPlayer radioPlayer = RadioPlayer();
-  List<String>? metadata;
 
   // ignore: prefer_typing_uninitialized_variables
   static int index = 0;
@@ -34,6 +35,7 @@ class _RadioScreenState extends State<RadioScreen> {
   @override
   void initState() {
     super.initState();
+    play();
   }
 
   late AppController provider = Provider.of<AppController>(context);
@@ -42,10 +44,8 @@ class _RadioScreenState extends State<RadioScreen> {
   Widget build(BuildContext context) {
     final TextDirection currentDirection = Directionality.of(context);
     final bool isLTR = currentDirection == TextDirection.ltr;
-
     radioStations =
         isLTR ? getRadioStations(englishRadio) : getRadioStations(arabicRadio);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -140,14 +140,9 @@ class _RadioScreenState extends State<RadioScreen> {
                                       : ThemeDataProvider.textLightThemeColor,
                                 ),
                                 onPressed: () {
-                                  setState(
-                                    () {
-                                      isPlaying == true ? false : true;
-                                    },
-                                  );
-                                  play(stations.data!.radios
-                                      .elementAt(index)
-                                      .radio_url);
+                                  isPlaying
+                                      ? _radioPlayer.pause()
+                                      : _radioPlayer.play();
                                 },
                               ),
                             ),
@@ -205,26 +200,37 @@ class _RadioScreenState extends State<RadioScreen> {
     );
   }
 
-  void play(String radioStation) {
-    radioPlayer.setChannel(title: "", url: radioStation);
-    isPlaying = !isPlaying;
-    isPlaying ? radioPlayer.play() : radioPlayer.pause();
-    radioPlayer.stateStream.listen((value) {
+  void play() {
+    _radioPlayer.stateStream.listen((value) {
       setState(() {
         isPlaying = value;
       });
     });
+    _radioPlayer.setChannel(
+      title: "Radio Quran",
+      url: "https://qurango.net/radio/salma",
+      imagePath: "assets/images/time.jpg",
+    );
   }
 
   void next(String radioStation, int length) {
     index == length ? index : index++;
-    radioPlayer.setChannel(title: "", url: radioStation);
+    _radioPlayer.setChannel(
+      title: "Radio Quran",
+      url: radioStation,
+      imagePath: "assets/images/time.jpg",
+    );
+
     setState(() {});
   }
 
   void previous(String radioStation) {
     index == 0 ? index : index--;
-    radioPlayer.setChannel(title: "", url: radioStation);
+    _radioPlayer.setChannel(
+      title: "Radio Quran",
+      url: radioStation,
+      imagePath: "assets/images/time.jpg",
+    );
     setState(() {});
   }
 }

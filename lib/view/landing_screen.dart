@@ -21,7 +21,7 @@ class _LandingScreenState extends State<LandingScreen> {
     const QuranScreen(),
     const HadithAndAzkarScreen(),
     const TasbeehScreen(),
-    const RadioScreen(),
+    RadioScreen(),
   ];
 
   void onTapNav(int index) {

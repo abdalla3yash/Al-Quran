@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.5
   arabic_numbers: ^1.0.0
   radio_player: ^1.0.0
+  audioplayers: ^1.0.1
 
 dev_dependencies:
   flutter_test:
