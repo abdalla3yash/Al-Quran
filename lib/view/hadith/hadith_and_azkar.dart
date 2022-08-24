@@ -56,7 +56,7 @@ class _HadithAndAzkarScreenState extends State<HadithAndAzkarScreen>
       body: Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.14,
+            height: MediaQuery.of(context).size.height * 0.15,
             decoration: const BoxDecoration(
                 color: ThemeDataProvider.mainAppColor,
                 borderRadius: BorderRadius.only(

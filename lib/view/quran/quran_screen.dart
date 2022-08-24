@@ -226,7 +226,11 @@ class _QuranScreenState extends State<QuranScreen> {
                                                 height: 5,
                                               ),
                                               Text(
-                                                times[i],
+                                                isRTL
+                                                    ? arabicNumber.convert(
+                                                        times[i],
+                                                      )
+                                                    : times[i],
                                                 style: const TextStyle(
                                                   fontSize: 14,
                                                   color: ThemeDataProvider

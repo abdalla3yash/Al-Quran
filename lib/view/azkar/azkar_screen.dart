@@ -29,9 +29,13 @@ class _AzkarScreenState extends State<AzkarScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: provider.isDarkTheme()
-                  ? const AssetImage("assets/images/bdark.png")
-                  : const AssetImage("assets/images/blight.png"),
+              image: MediaQuery.of(context).size.width > 1000
+                  ? provider.isDarkTheme()
+                      ? const AssetImage("assets/images/bdark-web.png")
+                      : const AssetImage("assets/images/blight-web.png")
+                  : provider.isDarkTheme()
+                      ? const AssetImage("assets/images/bdark.png")
+                      : const AssetImage("assets/images/blight.png"),
               // opacity: 0.4,
               fit: BoxFit.cover),
         ),

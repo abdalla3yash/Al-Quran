@@ -50,8 +50,10 @@ class _RadioScreenState extends State<RadioScreen> {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).radio,
-          style: const TextStyle(
-            color: ThemeDataProvider.backgroundLightColor,
+          style: TextStyle(
+            color: provider.isDarkTheme()
+                ? ThemeDataProvider.textDarkThemeColor
+                : ThemeDataProvider.textLightThemeColor,
             fontSize: 18,
           ),
         ),
@@ -81,7 +83,12 @@ class _RadioScreenState extends State<RadioScreen> {
                         const SizedBox(height: 50),
                         Text(
                           AppLocalizations.of(context).radio,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: TextStyle(
+                            color: provider.isDarkTheme()
+                                ? ThemeDataProvider.textDarkThemeColor
+                                : ThemeDataProvider.textLightThemeColor,
+                            fontSize: 24,
+                          ),
                         ),
                         const SizedBox(
                           height: 50,
