@@ -14,5 +14,16 @@
     "numOfTasbeehat":"Tasbeehat Number",
     "radio":"Quran Radio",
     "hadith":"Hadith",
-    "nothingtoshow":"Nothing to show!"
+    "nothingtoshow":"Nothing to show!",
+    "fajr":"Fajr",
+  "sunrise":"Sunrise",
+  "duhr":"Duhr",
+  "asr":"Asr",
+  "maghrib":"Maghrib",
+  "isha":"Isha",
+  "hello":"Peace be upon you",
+  "imsak":"Imsak",
+  "midnight":"Midnight",
+  "firsthird":"First Third",
+  "lasthird":"Last Third"
     }

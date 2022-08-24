@@ -18,11 +18,9 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(
+      icon: const Icon(
         Icons.settings,
-        color: provider.isDarkTheme()
-            ? ThemeDataProvider.mainAppDarkColor
-            : ThemeDataProvider.mainAppLightColor,
+        color: ThemeDataProvider.mainAppColor,
         size: 32,
       ),
       onPressed: () {
@@ -75,20 +73,16 @@ class _SettingScreenState extends State<SettingScreen> {
                                   ? provider.changeLanguage('ar')
                                   : provider.changeLanguage('en');
                             },
-                            icon: Icon(Icons.language,
+                            icon: const Icon(Icons.language,
                                 size: 32,
-                                color: provider.isEnglish()
-                                    ? ThemeDataProvider.mainAppDarkColor
-                                    : ThemeDataProvider.mainAppLightColor),
+                                color: ThemeDataProvider.mainAppColor),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 30),
                     Slider(
-                        activeColor: provider.isDarkTheme()
-                            ? ThemeDataProvider.mainAppDarkColor
-                            : ThemeDataProvider.mainAppLightColor,
+                        activeColor: ThemeDataProvider.mainAppColor,
                         value: Provider.of<AppController>(context, listen: true)
                             .valueHolder
                             .toDouble(),

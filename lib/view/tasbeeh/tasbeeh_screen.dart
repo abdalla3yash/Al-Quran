@@ -47,9 +47,6 @@ class _TasbeehScreenState extends State<TasbeehScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: provider.isDarkTheme()
-          ? ThemeDataProvider.backgroundDarkColor
-          : ThemeDataProvider.backgroundLightColor,
       appBar: AppBar(
           title: Text(
             AppLocalizations.of(context).tasbeeh,
@@ -57,52 +54,58 @@ class _TasbeehScreenState extends State<TasbeehScreen> {
                 color: ThemeDataProvider.textDarkThemeColor, fontSize: 18),
           ),
           centerTitle: true,
-          backgroundColor: provider.isDarkTheme()
-              ? ThemeDataProvider.mainAppDarkColor
-              : ThemeDataProvider.mainAppLightColor),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-          ),
-          Text(
-            tasbeehButtonLabel,
-            textScaleFactor: 1.5,
-            style: TextStyle(
-                color: provider.isDarkTheme()
-                    ? ThemeDataProvider.mainAppDarkColor
-                    : ThemeDataProvider.mainAppLightColor,
-                fontSize: provider.valueHolder.toDouble()),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-          ),
-          Text(
-            '$_tasbeehCounter ',
-            textScaleFactor: 1.5,
-            style: TextStyle(
-                color: provider.isDarkTheme() ? Colors.white : Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: provider.valueHolder.toDouble()),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.1,
-          ),
-          GestureDetector(
-            onTap: () {
-              _incrementTasbeehCounter();
-            },
-            child: Align(
-              alignment: Alignment.center,
-              child: CircleAvatar(
-                  radius: MediaQuery.of(context).size.width * 0.35,
-                  backgroundColor: _tasbeehCounter.isOdd
-                      ? ThemeDataProvider.mainAppDarkColor
-                      : ThemeDataProvider.mainAppLightColor),
+          backgroundColor: ThemeDataProvider.mainAppColor),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: provider.isDarkTheme()
+                  ? const AssetImage("assets/images/bdark.png")
+                  : const AssetImage("assets/images/blight.png"),
+              // opacity: 0.4,
+              fit: BoxFit.cover),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
             ),
-          ),
-        ],
+            Text(
+              tasbeehButtonLabel,
+              textScaleFactor: 1.5,
+              style: TextStyle(
+                  color: ThemeDataProvider.mainAppColor,
+                  fontSize: provider.valueHolder.toDouble()),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Text(
+              '$_tasbeehCounter ',
+              textScaleFactor: 1.5,
+              style: TextStyle(
+                  color: provider.isDarkTheme() ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: provider.valueHolder.toDouble()),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.1,
+            ),
+            GestureDetector(
+              onTap: () {
+                _incrementTasbeehCounter();
+              },
+              child: Align(
+                alignment: Alignment.center,
+                child: CircleAvatar(
+                    radius: MediaQuery.of(context).size.height * 0.2,
+                    backgroundColor: _tasbeehCounter.isOdd
+                        ? const Color.fromARGB(255, 47, 228, 161)
+                        : ThemeDataProvider.mainAppColor),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

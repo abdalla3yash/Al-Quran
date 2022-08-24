@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/controller/controllers/app_controller.dart';
-import 'package:quran/controller/utils/themedata.dart';
 import 'package:quran/view/hadith/hadith_item.dart';
 import '../../controller/utils/file_operation.dart';
 
@@ -27,22 +26,29 @@ class _HadithScreenState extends State<HadithScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: provider.isDarkTheme()
-          ? ThemeDataProvider.backgroundDarkColor
-          : ThemeDataProvider.backgroundLightColor,
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(top: 10.0),
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemBuilder: (context, index) =>
-                  HadithItem(hadethName.elementAt(index), index + 1),
-              itemCount: hadethName.length,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: provider.isDarkTheme()
+                  ? const AssetImage("assets/images/bdark.png")
+                  : const AssetImage("assets/images/blight.png"),
+              // opacity: 0.4,
+              fit: BoxFit.cover),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.only(top: 10.0),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemBuilder: (context, index) =>
+                    HadithItem(hadethName.elementAt(index), index + 1),
+                itemCount: hadethName.length,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

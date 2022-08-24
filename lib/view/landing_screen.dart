@@ -39,9 +39,7 @@ class _LandingScreenState extends State<LandingScreen> {
         backgroundColor: provider.isDarkTheme()
             ? ThemeDataProvider.primaryDarkThemeColor
             : ThemeDataProvider.primaryLightThemeColor,
-        selectedItemColor: provider.isDarkTheme()
-            ? ThemeDataProvider.mainAppDarkColor
-            : ThemeDataProvider.mainAppLightColor,
+        selectedItemColor: ThemeDataProvider.mainAppColor,
         unselectedItemColor: provider.isDarkTheme()
             ? ThemeDataProvider.textDarkThemeColor
             : ThemeDataProvider.textLightThemeColor,

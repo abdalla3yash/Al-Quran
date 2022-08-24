@@ -52,19 +52,14 @@ class _HadithAndAzkarScreenState extends State<HadithAndAzkarScreen>
     isRTL = currentDirection == TextDirection.rtl;
 
     return Scaffold(
-      backgroundColor: provider.isDarkTheme()
-          ? ThemeDataProvider.backgroundDarkColor
-          : ThemeDataProvider.backgroundLightColor,
       extendBodyBehindAppBar: true,
       body: Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.145,
-            decoration: BoxDecoration(
-                color: provider.isDarkTheme()
-                    ? ThemeDataProvider.mainAppDarkColor
-                    : ThemeDataProvider.mainAppLightColor,
-                borderRadius: const BorderRadius.only(
+            height: MediaQuery.of(context).size.height * 0.14,
+            decoration: const BoxDecoration(
+                color: ThemeDataProvider.mainAppColor,
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(25),
                   bottomRight: Radius.circular(25),
                 )),
@@ -75,14 +70,14 @@ class _HadithAndAzkarScreenState extends State<HadithAndAzkarScreen>
                   Text(
                     AppLocalizations.of(context).title,
                     style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       color: ThemeDataProvider.textDarkThemeColor,
                     ),
                   ),
                   TabBar(
                     indicatorColor: ThemeDataProvider.textDarkThemeColor,
                     labelColor: ThemeDataProvider.textDarkThemeColor,
-                    labelStyle: const TextStyle(fontSize: 24),
+                    labelStyle: const TextStyle(fontSize: 20),
                     indicatorSize: TabBarIndicatorSize.label,
                     controller: _tabController,
                     tabs: provider.isEnglish() ? tabs_en : tabs_ar,

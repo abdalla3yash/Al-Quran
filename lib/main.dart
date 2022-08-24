@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: Locale.fromSubtags(languageCode: Preferences.getLanguage()),
             home: const LandingScreen(),
+            debugShowCheckedModeBanner: false,
             routes: {
               QuranScreen.routeName: (context) => const QuranScreen(),
               ContentView.routeName: (context) => ContentView(),

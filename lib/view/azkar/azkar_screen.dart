@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quran/controller/utils/themedata.dart';
 import 'package:quran/view/azkar/azkar_item.dart';
 import '../../controller/controllers/app_controller.dart';
 import '../../controller/utils/file_operation.dart';
@@ -27,22 +26,29 @@ class _AzkarScreenState extends State<AzkarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: provider.isDarkTheme()
-          ? ThemeDataProvider.backgroundDarkColor
-          : ThemeDataProvider.backgroundLightColor,
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(top: 10.0),
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemBuilder: (context, index) =>
-                  AzkarItem(azkarName.elementAt(index), index + 1),
-              itemCount: azkarName.length,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: provider.isDarkTheme()
+                  ? const AssetImage("assets/images/bdark.png")
+                  : const AssetImage("assets/images/blight.png"),
+              // opacity: 0.4,
+              fit: BoxFit.cover),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.only(top: 10.0),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemBuilder: (context, index) =>
+                    AzkarItem(azkarName.elementAt(index), index + 1),
+                itemCount: azkarName.length,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

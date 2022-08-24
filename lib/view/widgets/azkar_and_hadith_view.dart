@@ -33,89 +33,98 @@ class _AzkarandHadithViewState extends State<AzkarandHadithView> {
       backgroundColor: provider.isDarkTheme()
           ? ThemeDataProvider.backgroundDarkColor
           : ThemeDataProvider.backgroundLightColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const SizedBox(height: 40),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SettingScreen(),
-              Text(args.title,
-                  style: TextStyle(
-                    fontSize: 32,
-                    color: provider.isDarkTheme()
-                        ? ThemeDataProvider.mainAppDarkColor
-                        : ThemeDataProvider.mainAppLightColor,
-                  )),
-              IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  Icons.arrow_forward_ios,
-                  color: provider.isDarkTheme()
-                      ? ThemeDataProvider.mainAppDarkColor
-                      : ThemeDataProvider.mainAppLightColor,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: provider.isDarkTheme()
+                  ? const AssetImage("assets/images/bdark.png")
+                  : const AssetImage("assets/images/blight.png"),
+              // opacity: 0.4,
+              fit: BoxFit.cover),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SettingScreen(),
+                Text(args.title,
+                    style: const TextStyle(
+                      fontSize: 32,
+                      color: ThemeDataProvider.mainAppColor,
+                    )),
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: ThemeDataProvider.mainAppColor,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Divider(
-            indent: 40,
-            endIndent: 40,
-            color:
-                provider.isDarkTheme() ? Colors.white70 : Colors.grey.shade700,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: FutureBuilder(
-                  future: getContent(args.fileNumber),
-                  builder: (BuildContext context, AsyncSnapshot<String> lines) {
-                    if (lines.data != null) {
-                      return Column(
-                        children: [
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text(
-                                textAlign: TextAlign.justify,
-                                lines.data!.toString(),
-                                style: TextStyle(
-                                  fontSize: Provider.of<AppController>(context,
-                                          listen: true)
-                                      .valueHolder
-                                      .toDouble(),
-                                  color: provider.isDarkTheme()
-                                      ? ThemeDataProvider.textDarkThemeColor
-                                      : ThemeDataProvider.textLightThemeColor,
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Divider(
+              indent: 40,
+              endIndent: 40,
+              color: provider.isDarkTheme()
+                  ? Colors.white70
+                  : Colors.grey.shade700,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: FutureBuilder(
+                    future: getContent(args.fileNumber),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<String> lines) {
+                      if (lines.data != null) {
+                        return Column(
+                          children: [
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  textAlign: TextAlign.justify,
+                                  lines.data!.toString(),
+                                  style: TextStyle(
+                                    fontSize: Provider.of<AppController>(
+                                            context,
+                                            listen: true)
+                                        .valueHolder
+                                        .toDouble(),
+                                    color: provider.isDarkTheme()
+                                        ? ThemeDataProvider.textDarkThemeColor
+                                        : ThemeDataProvider.textLightThemeColor,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      );
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  },
+                          ],
+                        );
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

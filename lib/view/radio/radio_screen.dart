@@ -47,141 +47,146 @@ class _RadioScreenState extends State<RadioScreen> {
         isLTR ? getRadioStations(englishRadio) : getRadioStations(arabicRadio);
 
     return Scaffold(
-      backgroundColor: provider.isDarkTheme()
-          ? ThemeDataProvider.backgroundDarkColor
-          : ThemeDataProvider.backgroundLightColor,
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).radio,
-          style: TextStyle(
-            color: provider.isDarkTheme()
-                ? ThemeDataProvider.backgroundDarkColor
-                : ThemeDataProvider.backgroundLightColor,
+          style: const TextStyle(
+            color: ThemeDataProvider.backgroundLightColor,
             fontSize: 18,
           ),
         ),
         centerTitle: true,
-        backgroundColor: provider.isDarkTheme()
-            ? ThemeDataProvider.mainAppDarkColor
-            : ThemeDataProvider.mainAppLightColor,
+        backgroundColor: ThemeDataProvider.mainAppColor,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: FutureBuilder<RadioResponse>(
-              future: radioStations,
-              builder: (context, stations) {
-                if (stations.hasData) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 50),
-                      Text(
-                        AppLocalizations.of(context).radio,
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 50,
-                          ),
-                          Expanded(
-                            child: Transform(
-                              transform: Matrix4.rotationY(isLTR ? math.pi : 0),
-                              alignment: AlignmentDirectional.center,
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.fast_forward_sharp,
-                                  size: 30,
-                                  color: provider.isDarkTheme()
-                                      ? ThemeDataProvider.textDarkThemeColor
-                                      : ThemeDataProvider.textLightThemeColor,
-                                ),
-                                onPressed: () {
-                                  next(
-                                    stations.data!.radios
-                                        .elementAt(index)
-                                        .radio_url,
-                                    stations.data!.radios.length,
-                                  );
-                                },
-                              ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: provider.isDarkTheme()
+                  ? const AssetImage("assets/images/bdark.png")
+                  : const AssetImage("assets/images/blight.png"),
+              // opacity: 0.4,
+              fit: BoxFit.cover),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: FutureBuilder<RadioResponse>(
+                future: radioStations,
+                builder: (context, stations) {
+                  if (stations.hasData) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 50),
+                        Text(
+                          AppLocalizations.of(context).radio,
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              width: 50,
                             ),
-                          ),
-                          Expanded(
-                            child: IconButton(
-                              icon: Icon(
-                                isPlaying ? Icons.pause : Icons.play_arrow,
-                                size: 30,
-                                color: provider.isDarkTheme()
-                                    ? ThemeDataProvider.textDarkThemeColor
-                                    : ThemeDataProvider.textLightThemeColor,
-                              ),
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    isPlaying == true ? false : true;
+                            Expanded(
+                              child: Transform(
+                                transform:
+                                    Matrix4.rotationY(isLTR ? math.pi : 0),
+                                alignment: AlignmentDirectional.center,
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.fast_forward_sharp,
+                                    size: 30,
+                                    color: provider.isDarkTheme()
+                                        ? ThemeDataProvider.textDarkThemeColor
+                                        : ThemeDataProvider.textLightThemeColor,
+                                  ),
+                                  onPressed: () {
+                                    next(
+                                      stations.data!.radios
+                                          .elementAt(index)
+                                          .radio_url,
+                                      stations.data!.radios.length,
+                                    );
                                   },
-                                );
-                                play(stations.data!.radios
-                                    .elementAt(index)
-                                    .radio_url);
-                              },
+                                ),
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Transform(
-                              transform: Matrix4.rotationY(isLTR ? math.pi : 0),
-                              alignment: AlignmentDirectional.center,
+                            Expanded(
                               child: IconButton(
                                 icon: Icon(
-                                  Icons.fast_rewind,
+                                  isPlaying ? Icons.pause : Icons.play_arrow,
                                   size: 30,
                                   color: provider.isDarkTheme()
                                       ? ThemeDataProvider.textDarkThemeColor
                                       : ThemeDataProvider.textLightThemeColor,
                                 ),
                                 onPressed: () {
-                                  previous(stations.data!.radios
+                                  setState(
+                                    () {
+                                      isPlaying == true ? false : true;
+                                    },
+                                  );
+                                  play(stations.data!.radios
                                       .elementAt(index)
                                       .radio_url);
                                 },
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 50,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                        convertUTF8(
-                            stations.data!.radios.elementAt(index).name),
-                        style: TextStyle(
-                          color: provider.isDarkTheme()
-                              ? ThemeDataProvider.textDarkThemeColor
-                              : ThemeDataProvider.textLightThemeColor,
-                          fontSize: 20,
+                            Expanded(
+                              child: Transform(
+                                transform:
+                                    Matrix4.rotationY(isLTR ? math.pi : 0),
+                                alignment: AlignmentDirectional.center,
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.fast_rewind,
+                                    size: 30,
+                                    color: provider.isDarkTheme()
+                                        ? ThemeDataProvider.textDarkThemeColor
+                                        : ThemeDataProvider.textLightThemeColor,
+                                  ),
+                                  onPressed: () {
+                                    previous(stations.data!.radios
+                                        .elementAt(index)
+                                        .radio_url);
+                                  },
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 50,
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  );
-                } else if (stations.hasError) {
-                  return const Text("Error loading radio");
-                }
-                return const CircularProgressIndicator();
-              },
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          convertUTF8(
+                              stations.data!.radios.elementAt(index).name),
+                          style: TextStyle(
+                            color: provider.isDarkTheme()
+                                ? ThemeDataProvider.textDarkThemeColor
+                                : ThemeDataProvider.textLightThemeColor,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    );
+                  } else if (stations.hasError) {
+                    return const Text("Error loading radio");
+                  }
+                  return const CircularProgressIndicator();
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -190,7 +195,11 @@ class _RadioScreenState extends State<RadioScreen> {
     radioPlayer.setChannel(title: "", url: radioStation);
     isPlaying = !isPlaying;
     isPlaying ? radioPlayer.play() : radioPlayer.pause();
-    setState(() {});
+    radioPlayer.stateStream.listen((value) {
+      setState(() {
+        isPlaying = value;
+      });
+    });
   }
 
   void next(String radioStation, int length) {

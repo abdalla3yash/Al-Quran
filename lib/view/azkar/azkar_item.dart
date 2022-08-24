@@ -38,9 +38,7 @@ class AzkarItem extends StatelessWidget {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: provider.isDarkTheme()
-                            ? ThemeDataProvider.mainAppDarkColor
-                            : ThemeDataProvider.mainAppLightColor,
+                        color: ThemeDataProvider.mainAppColor,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Center(
