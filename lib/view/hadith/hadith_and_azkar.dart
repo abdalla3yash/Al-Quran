@@ -53,42 +53,60 @@ class _HadithAndAzkarScreenState extends State<HadithAndAzkarScreen>
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.15,
-            decoration: const BoxDecoration(
-                color: ThemeDataProvider.mainAppColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
-                )),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Column(
-                children: [
-                  Text(
-                    AppLocalizations.of(context).title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: ThemeDataProvider.textDarkThemeColor,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: MediaQuery.of(context).size.width > 1000
+                  ? provider.isDarkTheme()
+                      ? const AssetImage(
+                          ThemeDataProvider.imageBackgroundDarkWeb)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLightWeb)
+                  : provider.isDarkTheme()
+                      ? const AssetImage(ThemeDataProvider.imageBackgroundDark)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLight),
+              // opacity: 0.4,
+              fit: BoxFit.cover),
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.15,
+              decoration: const BoxDecoration(
+                  color: ThemeDataProvider.mainAppColor,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25),
+                  )),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Column(
+                  children: [
+                    Text(
+                      AppLocalizations.of(context).title,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: ThemeDataProvider.textDarkThemeColor,
+                      ),
                     ),
-                  ),
-                  TabBar(
-                    indicatorColor: ThemeDataProvider.textDarkThemeColor,
-                    labelColor: ThemeDataProvider.textDarkThemeColor,
-                    labelStyle: const TextStyle(fontSize: 20),
-                    indicatorSize: TabBarIndicatorSize.label,
-                    controller: _tabController,
-                    tabs: provider.isEnglish() ? tabs_en : tabs_ar,
-                  ),
-                ],
+                    TabBar(
+                      indicatorColor: ThemeDataProvider.textDarkThemeColor,
+                      labelColor: ThemeDataProvider.textDarkThemeColor,
+                      labelStyle: const TextStyle(fontSize: 20),
+                      indicatorSize: TabBarIndicatorSize.label,
+                      controller: _tabController,
+                      tabs: provider.isEnglish() ? tabs_en : tabs_ar,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-              child: TabBarView(controller: _tabController, children: widgets))
-        ],
+            Expanded(
+                child:
+                    TabBarView(controller: _tabController, children: widgets))
+          ],
+        ),
       ),
     );
   }

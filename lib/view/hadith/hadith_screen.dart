@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/controller/controllers/app_controller.dart';
+import 'package:quran/controller/utils/themedata.dart';
 import 'package:quran/view/hadith/hadith_item.dart';
 import '../../controller/utils/file_operation.dart';
 
@@ -29,9 +30,16 @@ class _HadithScreenState extends State<HadithScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: provider.isDarkTheme()
-                  ? const AssetImage("assets/images/bdark.png")
-                  : const AssetImage("assets/images/blight.png"),
+              image: MediaQuery.of(context).size.width > 1000
+                  ? provider.isDarkTheme()
+                      ? const AssetImage(
+                          ThemeDataProvider.imageBackgroundDarkWeb)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLightWeb)
+                  : provider.isDarkTheme()
+                      ? const AssetImage(ThemeDataProvider.imageBackgroundDark)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLight),
               // opacity: 0.4,
               fit: BoxFit.cover),
         ),

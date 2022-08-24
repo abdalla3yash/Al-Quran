@@ -46,17 +46,6 @@ class _SettingScreenState extends State<SettingScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // Text(
-                          //   provider.isDarkTheme()
-                          //       ? AppLocalizations.of(context).light
-                          //       : AppLocalizations.of(context).dark,
-                          //   style: TextStyle(
-                          //     fontSize: 20,
-                          //     color: provider.isDarkTheme()
-                          //         ? ThemeDataProvider.textDarkThemeColor
-                          //         : ThemeDataProvider.textLightThemeColor,
-                          //   ),
-                          // ),
                           IconButton(
                             onPressed: () {
                               provider.isDarkTheme()

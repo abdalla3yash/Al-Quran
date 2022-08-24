@@ -6,6 +6,11 @@ class ThemeDataProvider {
   static const textDarkThemeColor = Colors.white;
   static const backgroundDarkColor = Color.fromARGB(255, 55, 57, 58);
 
+  static const imageBackgroundLight = "assets/images/blight.png";
+  static const imageBackgroundDark = "assets/images/bdark.png";
+  static const imageBackgroundLightWeb = "assets/images/blight-web.png";
+  static const imageBackgroundDarkWeb = "assets/images/bdark-web.png";
+
   static const mainAppColor = Color(0xFF0ec683);
   static const textLightThemeColor = Color.fromARGB(255, 58, 58, 58);
   static const backgroundLightColor = Colors.white;

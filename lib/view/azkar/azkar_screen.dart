@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quran/controller/utils/themedata.dart';
 import 'package:quran/view/azkar/azkar_item.dart';
 import '../../controller/controllers/app_controller.dart';
 import '../../controller/utils/file_operation.dart';
@@ -31,11 +32,14 @@ class _AzkarScreenState extends State<AzkarScreen> {
           image: DecorationImage(
               image: MediaQuery.of(context).size.width > 1000
                   ? provider.isDarkTheme()
-                      ? const AssetImage("assets/images/bdark-web.png")
-                      : const AssetImage("assets/images/blight-web.png")
+                      ? const AssetImage(
+                          ThemeDataProvider.imageBackgroundDarkWeb)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLightWeb)
                   : provider.isDarkTheme()
-                      ? const AssetImage("assets/images/bdark.png")
-                      : const AssetImage("assets/images/blight.png"),
+                      ? const AssetImage(ThemeDataProvider.imageBackgroundDark)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLight),
               // opacity: 0.4,
               fit: BoxFit.cover),
         ),

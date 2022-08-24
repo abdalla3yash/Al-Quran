@@ -58,9 +58,16 @@ class _TasbeehScreenState extends State<TasbeehScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: provider.isDarkTheme()
-                  ? const AssetImage("assets/images/bdark.png")
-                  : const AssetImage("assets/images/blight.png"),
+              image: MediaQuery.of(context).size.width > 1000
+                  ? provider.isDarkTheme()
+                      ? const AssetImage(
+                          ThemeDataProvider.imageBackgroundDarkWeb)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLightWeb)
+                  : provider.isDarkTheme()
+                      ? const AssetImage(ThemeDataProvider.imageBackgroundDark)
+                      : const AssetImage(
+                          ThemeDataProvider.imageBackgroundLight),
               // opacity: 0.4,
               fit: BoxFit.cover),
         ),
