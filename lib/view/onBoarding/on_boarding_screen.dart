@@ -20,7 +20,7 @@ class onBoardingPage extends StatelessWidget {
           decoration: buildDecoration(),
         ),
         PageViewModel(
-          title: "'وَحَيْثُ مَا كُنتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ ۗ'",
+          title: "'وَحَيْثُ مَا كُنتُمْ فَوَلُّوا وُجُوهَكُمْ شَطْرَهُ'",
           body: 'مواقيت الصلاه تساعدك على تذكر اوقات الصلاه بسهوله تامه',
           image: buildImage('assets/images/onboarding3.jpg'),
           decoration: buildDecoration(),
@@ -28,7 +28,8 @@ class onBoardingPage extends StatelessWidget {
         PageViewModel(
           title:
               "'فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ ۚإِنَّهُ كَانَ تَوَّابً'",
-          body: 'هنالك الكثير من الاحاديث والادعيه والاذكار والتسبيح',
+          body:
+              ' هنالك الكثير من الاحاديث والادعيه والاذكار والتسبيح وتحديد اتجاه القبله ',
           image: buildImage('assets/images/onboarding2.png'),
           decoration: buildDecoration(),
         ),

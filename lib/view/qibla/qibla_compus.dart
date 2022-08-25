@@ -1,8 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
-
-import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:geolocator/geolocator.dart';
@@ -21,12 +18,12 @@ class QiblahCompass extends StatefulWidget {
 }
 
 class _QiblahCompassState extends State<QiblahCompass> {
+  // ignore: prefer_typing_uninitialized_variables
   var futureAlbum;
   @override
   void initState() {
     futureAlbum = Provider.of<AppController>(context, listen: false)
         .checkLocationStatus();
-
     super.initState();
   }
 

@@ -24,7 +24,6 @@ class AppController extends ChangeNotifier {
       await FlutterQiblah.requestPermissions();
       final s = await FlutterQiblah.checkLocationStatus();
       locationStreamController.sink.add(s);
-      print(s);
     } else {
       locationStreamController.sink.add(locationStatus);
     }

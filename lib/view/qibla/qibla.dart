@@ -58,7 +58,7 @@ class _QiblaScreenState extends State<QiblaScreen> {
             }
 
             if (snapshot.data!) {
-              return QiblahCompass();
+              return const QiblahCompass();
             } else {
               return const Center(child: Text("UnExpected Error!!"));
             }
