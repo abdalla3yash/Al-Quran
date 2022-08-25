@@ -41,8 +41,12 @@ dependencies:
   http: ^0.13.5
   arabic_numbers: ^1.0.0
   radio_player: ^1.0.0
-  audioplayers: ^1.0.1
-
+  introduction_screen: ^3.0.2
+  lottie: ^1.4.2
+  flutter_qiblah: ^2.0.2
+  geolocator: ^7.6.0
+  flutter_svg: ^1.1.4
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

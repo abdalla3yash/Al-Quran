@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_qiblah/flutter_qiblah.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:quran/controller/utils/constant.dart';
 import 'package:quran/controller/utils/preferences.dart';
 import 'package:quran/model/adhan_model.dart';
@@ -11,6 +14,22 @@ class AppController extends ChangeNotifier {
   String currentLocale = 'ar';
 
   int valueHolder = 20;
+
+  final locationStreamController = StreamController<LocationStatus>.broadcast();
+  get stream => locationStreamController.stream;
+  Future<void> checkLocationStatus() async {
+    final locationStatus = await FlutterQiblah.checkLocationStatus();
+    if (locationStatus.enabled &&
+        locationStatus.status == LocationPermission.denied) {
+      await FlutterQiblah.requestPermissions();
+      final s = await FlutterQiblah.checkLocationStatus();
+      locationStreamController.sink.add(s);
+      print(s);
+    } else {
+      locationStreamController.sink.add(locationStatus);
+    }
+    notifyListeners();
+  }
 
   Future<AdhanModel> fetchAlbum() async {
     final response = await http

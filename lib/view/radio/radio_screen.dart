@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/controller/utils/themedata.dart';
+import 'package:quran/controller/utils/loading_indicator.dart';
 import 'package:radio_player/radio_player.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -31,7 +33,6 @@ class _RadioScreenState extends State<RadioScreen> {
   static int index = 0;
   String arabicRadio = "https://api.mp3quran.net/radios/radio_arabic.json";
   String englishRadio = "https://api.mp3quran.net/radios/radio_english.json";
-
   @override
   void initState() {
     super.initState();
@@ -73,11 +74,9 @@ class _RadioScreenState extends State<RadioScreen> {
                       ? const AssetImage(ThemeDataProvider.imageBackgroundDark)
                       : const AssetImage(
                           ThemeDataProvider.imageBackgroundLight),
-              // opacity: 0.4,
               fit: BoxFit.cover),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: FutureBuilder<RadioResponse>(
@@ -99,6 +98,26 @@ class _RadioScreenState extends State<RadioScreen> {
                         ),
                         const SizedBox(
                           height: 50,
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            child: Lottie.asset('assets/images/radio.json')),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                        ),
+                        Text(
+                          convertUTF8(
+                              stations.data!.radios.elementAt(index).name),
+                          style: TextStyle(
+                            color: provider.isDarkTheme()
+                                ? ThemeDataProvider.textDarkThemeColor
+                                : ThemeDataProvider.textLightThemeColor,
+                            fontSize: 18,
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -131,19 +150,24 @@ class _RadioScreenState extends State<RadioScreen> {
                               ),
                             ),
                             Expanded(
-                              child: IconButton(
-                                icon: Icon(
-                                  isPlaying ? Icons.pause : Icons.play_arrow,
-                                  size: 30,
-                                  color: provider.isDarkTheme()
-                                      ? ThemeDataProvider.textDarkThemeColor
-                                      : ThemeDataProvider.textLightThemeColor,
+                              child: CircleAvatar(
+                                maxRadius: 30,
+                                minRadius: 20,
+                                backgroundColor: ThemeDataProvider.mainAppColor,
+                                child: IconButton(
+                                  icon: Icon(
+                                    isPlaying ? Icons.pause : Icons.play_arrow,
+                                    size: 30,
+                                    color: provider.isDarkTheme()
+                                        ? ThemeDataProvider.textDarkThemeColor
+                                        : ThemeDataProvider.textLightThemeColor,
+                                  ),
+                                  onPressed: () {
+                                    isPlaying
+                                        ? _radioPlayer.pause()
+                                        : _radioPlayer.play();
+                                  },
                                 ),
-                                onPressed: () {
-                                  isPlaying
-                                      ? _radioPlayer.pause()
-                                      : _radioPlayer.play();
-                                },
                               ),
                             ),
                             Expanded(
@@ -175,22 +199,12 @@ class _RadioScreenState extends State<RadioScreen> {
                         const SizedBox(
                           height: 30,
                         ),
-                        Text(
-                          convertUTF8(
-                              stations.data!.radios.elementAt(index).name),
-                          style: TextStyle(
-                            color: provider.isDarkTheme()
-                                ? ThemeDataProvider.textDarkThemeColor
-                                : ThemeDataProvider.textLightThemeColor,
-                            fontSize: 20,
-                          ),
-                        ),
                       ],
                     );
                   } else if (stations.hasError) {
                     return const Text("Error loading radio");
                   }
-                  return const CircularProgressIndicator();
+                  return const LoadingIndicator();
                 },
               ),
             ),
@@ -208,7 +222,7 @@ class _RadioScreenState extends State<RadioScreen> {
     });
     _radioPlayer.setChannel(
       title: "Radio Quran",
-      url: "https://qurango.net/radio/salma",
+      url: "https://qurango.net/radio/sahabah",
       imagePath: "assets/images/time.jpg",
     );
   }

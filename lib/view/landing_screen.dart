@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quran/controller/utils/themedata.dart';
 import 'package:quran/view/hadith/hadith_and_azkar.dart';
+import 'package:quran/view/qibla/qibla.dart';
 import 'package:quran/view/quran/quran_screen.dart';
 import 'package:quran/view/radio/radio_screen.dart';
 import 'package:quran/view/tasbeeh/tasbeeh_screen.dart';
 import '../controller/controllers/app_controller.dart';
 
 class LandingScreen extends StatefulWidget {
+  static const String routeName = "landing-screen";
+
   const LandingScreen({Key? key}) : super(key: key);
 
   @override
@@ -21,6 +24,7 @@ class _LandingScreenState extends State<LandingScreen> {
     const QuranScreen(),
     const HadithAndAzkarScreen(),
     const TasbeehScreen(),
+    const QiblaScreen(),
     const RadioScreen(),
   ];
 
@@ -57,6 +61,8 @@ class _LandingScreenState extends State<LandingScreen> {
               icon: Icon(Icons.library_books_outlined), label: 'hadeth'),
           BottomNavigationBarItem(
               icon: Icon(Icons.rounded_corner), label: 'tasbeeh'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.compass_calibration_outlined), label: 'qiblah'),
           BottomNavigationBarItem(icon: Icon(Icons.radio), label: 'Radio'),
         ],
       ),

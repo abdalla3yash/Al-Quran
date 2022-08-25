@@ -5,6 +5,7 @@ import 'package:quran/controller/controllers/app_controller.dart';
 import 'package:quran/controller/utils/file_operation.dart';
 import 'package:quran/controller/utils/themedata.dart';
 import 'package:quran/model/adhan_model.dart';
+import 'package:quran/controller/utils/loading_indicator.dart';
 import 'package:quran/view/quran/surah_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -158,7 +159,7 @@ class _QuranScreenState extends State<QuranScreen> {
                     } else if (snapshot.hasError) {
                       return Text("${snapshot.error}");
                     }
-                    return const Center(child: CircularProgressIndicator());
+                    return const LoadingIndicator();
                   },
                 ),
                 Positioned(
@@ -254,10 +255,7 @@ class _QuranScreenState extends State<QuranScreen> {
                       } else if (snapshot.hasError) {
                         return Text("${snapshot.error}");
                       }
-                      return const Center(
-                          child: CircularProgressIndicator(
-                        color: ThemeDataProvider.mainAppColor,
-                      ));
+                      return const LoadingIndicator();
                     },
                   ),
                 ),
