@@ -15,7 +15,7 @@ class onBoardingPage extends StatelessWidget {
         PageViewModel(
           title: "'قَالَ  أَسْلَمْتُ  لِرَبِّ  الْعَالَمِينَ'",
           body:
-              'تطبيق القرآن يساعدك على قراءه القرآن وتدبر معانيه وكعرفه مواقيت الصلاه وتسبيح الله وقرآه الاذكاء والادعيه أينما ذهبت',
+              'تطبيق القرآن يساعدك على قراءه القرآن وتدبر معانيه ومعرفه مواقيت الصلاه وتسبيح الله وقرآه الاذكار والادعيه أينما ذهبت',
           image: buildImage('assets/images/onboarding1.png'),
           decoration: buildDecoration(),
         ),

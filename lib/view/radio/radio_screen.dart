@@ -51,10 +51,8 @@ class _RadioScreenState extends State<RadioScreen> {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).radio,
-          style: TextStyle(
-            color: provider.isDarkTheme()
-                ? ThemeDataProvider.textDarkThemeColor
-                : ThemeDataProvider.textLightThemeColor,
+          style: const TextStyle(
+            color: ThemeDataProvider.textDarkThemeColor,
             fontSize: 18,
           ),
         ),
@@ -106,9 +104,19 @@ class _RadioScreenState extends State<RadioScreen> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.05,
                         ),
+                        // Text(
+                        //   convertUTF8(
+                        //       stations.data!.radios.elementAt(index).name),
+                        //   style: TextStyle(
+                        //     color: provider.isDarkTheme()
+                        //         ? ThemeDataProvider.textDarkThemeColor
+                        //         : ThemeDataProvider.textLightThemeColor,
+                        //     fontSize: 18,
+                        //   ),
+                        // ),
+
                         Text(
-                          convertUTF8(
-                              stations.data!.radios.elementAt(index).name),
+                          "الإذاعة العامة - اذاعة متنوعة لمختلف القراء",
                           style: TextStyle(
                             color: provider.isDarkTheme()
                                 ? ThemeDataProvider.textDarkThemeColor
@@ -125,30 +133,30 @@ class _RadioScreenState extends State<RadioScreen> {
                             const SizedBox(
                               width: 50,
                             ),
-                            Expanded(
-                              child: Transform(
-                                transform:
-                                    Matrix4.rotationY(isLTR ? math.pi : 0),
-                                alignment: AlignmentDirectional.center,
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.fast_forward_sharp,
-                                    size: 30,
-                                    color: provider.isDarkTheme()
-                                        ? ThemeDataProvider.textDarkThemeColor
-                                        : ThemeDataProvider.textLightThemeColor,
-                                  ),
-                                  onPressed: () {
-                                    next(
-                                      stations.data!.radios
-                                          .elementAt(index)
-                                          .radio_url,
-                                      stations.data!.radios.length,
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
+                            // Expanded(
+                            //   child: Transform(
+                            //     transform:
+                            //         Matrix4.rotationY(isLTR ? math.pi : 0),
+                            //     alignment: AlignmentDirectional.center,
+                            //     child: IconButton(
+                            //       icon: Icon(
+                            //         Icons.fast_forward_sharp,
+                            //         size: 30,
+                            //         color: provider.isDarkTheme()
+                            //             ? ThemeDataProvider.textDarkThemeColor
+                            //             : ThemeDataProvider.textLightThemeColor,
+                            //       ),
+                            //       onPressed: () {
+                            //         next(
+                            //           stations.data!.radios
+                            //               .elementAt(index)
+                            //               .radio_url,
+                            //           stations.data!.radios.length,
+                            //         );
+                            //       },
+                            //     ),
+                            //   ),
+                            // ),
                             Expanded(
                               child: CircleAvatar(
                                 maxRadius: 30,
@@ -158,9 +166,7 @@ class _RadioScreenState extends State<RadioScreen> {
                                   icon: Icon(
                                     isPlaying ? Icons.pause : Icons.play_arrow,
                                     size: 30,
-                                    color: provider.isDarkTheme()
-                                        ? ThemeDataProvider.textDarkThemeColor
-                                        : ThemeDataProvider.textLightThemeColor,
+                                    color: ThemeDataProvider.textDarkThemeColor,
                                   ),
                                   onPressed: () {
                                     isPlaying
@@ -170,27 +176,27 @@ class _RadioScreenState extends State<RadioScreen> {
                                 ),
                               ),
                             ),
-                            Expanded(
-                              child: Transform(
-                                transform:
-                                    Matrix4.rotationY(isLTR ? math.pi : 0),
-                                alignment: AlignmentDirectional.center,
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.fast_rewind,
-                                    size: 30,
-                                    color: provider.isDarkTheme()
-                                        ? ThemeDataProvider.textDarkThemeColor
-                                        : ThemeDataProvider.textLightThemeColor,
-                                  ),
-                                  onPressed: () {
-                                    previous(stations.data!.radios
-                                        .elementAt(index)
-                                        .radio_url);
-                                  },
-                                ),
-                              ),
-                            ),
+                            // Expanded(
+                            //   child: Transform(
+                            //     transform:
+                            //         Matrix4.rotationY(isLTR ? math.pi : 0),
+                            //     alignment: AlignmentDirectional.center,
+                            //     child: IconButton(
+                            //       icon: Icon(
+                            //         Icons.fast_rewind,
+                            //         size: 30,
+                            //         color: provider.isDarkTheme()
+                            //             ? ThemeDataProvider.textDarkThemeColor
+                            //             : ThemeDataProvider.textLightThemeColor,
+                            //       ),
+                            //       onPressed: () {
+                            //         previous(stations.data!.radios
+                            //             .elementAt(index)
+                            //             .radio_url);
+                            //       },
+                            //     ),
+                            //   ),
+                            // ),
                             const SizedBox(
                               width: 50,
                             ),
@@ -222,7 +228,7 @@ class _RadioScreenState extends State<RadioScreen> {
     });
     _radioPlayer.setChannel(
       title: "Radio Quran",
-      url: "https://qurango.net/radio/sahabah",
+      url: "https://Qurango.net/radio/mix",
       imagePath: "assets/images/time.jpg",
     );
   }
