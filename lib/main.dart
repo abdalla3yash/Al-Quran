@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
                 : LandingScreen.routeName,
             routes: {
               onBoardingPage.routeName: (context) => const onBoardingPage(),
-              InfoScreen.routeName: (context) => InfoScreen(),
+              InfoScreen.routeName: (context) => const InfoScreen(),
               LandingScreen.routeName: (context) => const LandingScreen(),
               QuranScreen.routeName: (context) => const QuranScreen(),
               ContentView.routeName: (context) => ContentView(),

@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 class InfoScreen extends StatefulWidget {
   static const String routeName = "infoview";
 
-  InfoScreen({Key? key}) : super(key: key);
+  const InfoScreen({Key? key}) : super(key: key);
 
   @override
   State<InfoScreen> createState() => _InfoScreenState();
@@ -19,17 +19,20 @@ class InfoScreen extends StatefulWidget {
 class _InfoScreenState extends State<InfoScreen> {
   ArabicNumbers arabicNumber = ArabicNumbers();
 
-  List<Uri> urls = [
-    Uri.parse('https://www.linkedin.com/in/abdalla-ayash/'),
-    Uri.parse('https://github.com/abdalla3yash'),
-    Uri.parse('https://www.facebook.com/abdalla.3yash'),
-    Uri.parse("https://wa.me/+201091032414"),
-    Uri.parse("https://ayash.netlify.app/"),
-    Uri.parse("https://twitter.com/3yashh/"),
-  ];
-
-  Future<void> _launchUrl(int i) async {
-    if (!await launchUrl(urls[i])) {
+  _launchURL(int i) async {
+    List<String> urls = [
+      'https://www.linkedin.com/in/abdalla-ayash/',
+      'https://github.com/abdalla3yash',
+      'https://www.facebook.com/abdalla.3yash',
+      "https://wa.me/201091032414",
+      "https://ayash.netlify.app/",
+      "https://twitter.com/3yashh/",
+    ];
+    // ignore: deprecated_member_use
+    if (await canLaunch(urls[i])) {
+      // ignore: deprecated_member_use
+      await launch(urls[i]);
+    } else {
       throw 'Could not launch $urls[i]';
     }
   }
@@ -62,106 +65,104 @@ class _InfoScreenState extends State<InfoScreen> {
               fit: BoxFit.cover),
         ),
         child: SingleChildScrollView(
-          child: Container(
-            child: Column(children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.25,
-                decoration: const BoxDecoration(
-                  color: ThemeDataProvider.mainAppColor,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
+          child: Column(children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.25,
+              decoration: const BoxDecoration(
+                color: ThemeDataProvider.mainAppColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: SizedBox(
-                        child: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          foregroundColor: ThemeDataProvider.mainAppColor,
-                          radius: MediaQuery.of(context).size.width * 0.12,
-                          child: Image.asset(
-                            "assets/images/logo.png",
-                            fit: BoxFit.cover,
-                          ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: SizedBox(
+                      child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        foregroundColor: ThemeDataProvider.mainAppColor,
+                        radius: MediaQuery.of(context).size.width * 0.12,
+                        child: Image.asset(
+                          "assets/images/logo.png",
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Spacer(),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          child: Center(
-                            child: Image.asset(
-                              "assets/images/quran.png",
-                              fit: BoxFit.cover,
-                              color: Colors.white,
-                            ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: Center(
+                          child: Image.asset(
+                            "assets/images/quran.png",
+                            fit: BoxFit.cover,
+                            color: Colors.white,
                           ),
                         ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        const Text(
-                          "`وَأَنَّ سَعْيَهُۥ سَوْفَ يُرَىٰ`",
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "quranFont",
-                              color: Colors.white),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              settings(context),
-              const SizedBox(height: 10),
-              about(context),
-              const SizedBox(height: 10),
-              developers(context),
-              const SizedBox(height: 20),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  provider.isEnglish()
-                      ? "Ayash 2022 © All Rights Reserved"
-                      : arabicNumber.convert("جميع الحقوق محفوظه © عياش 2022"),
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: provider.isDarkTheme()
-                        ? ThemeDataProvider.textDarkThemeColor
-                        : ThemeDataProvider.textLightThemeColor,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const Text(
+                        "`وَأَنَّ سَعْيَهُۥ سَوْفَ يُرَىٰ`",
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "quranFont",
+                            color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+            settings(context),
+            const SizedBox(height: 10),
+            about(context),
+            const SizedBox(height: 10),
+            developers(context),
+            const SizedBox(height: 20),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                provider.isEnglish()
+                    ? "Ayash 2022 © All Rights Reserved"
+                    : arabicNumber.convert("جميع الحقوق محفوظه © عياش 2022"),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: provider.isDarkTheme()
+                      ? ThemeDataProvider.textDarkThemeColor
+                      : ThemeDataProvider.textLightThemeColor,
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  provider.isEnglish()
-                      ? "1.0.0 version"
-                      : arabicNumber.convert("1.0.0 إصدار"),
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: provider.isDarkTheme()
-                        ? ThemeDataProvider.textDarkThemeColor
-                        : ThemeDataProvider.textLightThemeColor,
-                  ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                provider.isEnglish()
+                    ? "1.0.0 version"
+                    : arabicNumber.convert("1.0.0 إصدار"),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: provider.isDarkTheme()
+                      ? ThemeDataProvider.textDarkThemeColor
+                      : ThemeDataProvider.textLightThemeColor,
                 ),
               ),
-            ]),
-          ),
+            ),
+          ]),
         ),
       ),
     );
@@ -256,7 +257,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      _launchUrl(0);
+                      _launchURL(0);
                     },
                     icon: const FaIcon(
                       FontAwesomeIcons.linkedinIn,
@@ -265,7 +266,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      _launchUrl(1);
+                      _launchURL(1);
                     },
                     icon: FaIcon(
                       FontAwesomeIcons.github,
@@ -276,7 +277,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      _launchUrl(4);
+                      _launchURL(4);
                     },
                     icon: const FaIcon(
                       FontAwesomeIcons.bugs,
@@ -285,7 +286,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      _launchUrl(3);
+                      _launchURL(3);
                     },
                     icon: const FaIcon(
                       FontAwesomeIcons.whatsapp,
@@ -294,7 +295,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      _launchUrl(2);
+                      _launchURL(2);
                     },
                     icon: const FaIcon(
                       FontAwesomeIcons.facebook,
@@ -303,7 +304,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      _launchUrl(5);
+                      _launchURL(5);
                     },
                     icon: const FaIcon(
                       FontAwesomeIcons.twitter,
@@ -461,7 +462,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   semanticFormatterCallback: (double newValue) {
                     return '${newValue.round()}';
                   }),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 50,
                 child: Padding(
