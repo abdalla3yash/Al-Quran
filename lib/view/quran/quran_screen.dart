@@ -6,6 +6,7 @@ import 'package:quran/controller/utils/file_operation.dart';
 import 'package:quran/controller/utils/themedata.dart';
 import 'package:quran/model/adhan_model.dart';
 import 'package:quran/controller/utils/loading_indicator.dart';
+import 'package:quran/view/info/info_screen.dart';
 import 'package:quran/view/quran/surah_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -61,21 +62,38 @@ class _QuranScreenState extends State<QuranScreen> {
             const SizedBox(
               height: 20,
             ),
-            Align(
-              alignment: isRTL ? Alignment.topRight : Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  AppLocalizations.of(context).hello,
-                  style: TextStyle(
-                    color: provider.isDarkTheme()
-                        ? ThemeDataProvider.textDarkThemeColor
-                        : ThemeDataProvider.textLightThemeColor,
-                    fontSize: 32,
-                    fontFamily: "quranFont",
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: isRTL ? Alignment.topRight : Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      AppLocalizations.of(context).hello,
+                      style: TextStyle(
+                        color: provider.isDarkTheme()
+                            ? ThemeDataProvider.textDarkThemeColor
+                            : ThemeDataProvider.textLightThemeColor,
+                        fontSize: 24,
+                        fontFamily: "quranFont",
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, InfoScreen.routeName);
+                      },
+                      icon: const Icon(
+                        Icons.info_outline_rounded,
+                        color: ThemeDataProvider.mainAppColor,
+                        size: 32,
+                      )),
+                ),
+              ],
             ),
             const SizedBox(
               height: 20,

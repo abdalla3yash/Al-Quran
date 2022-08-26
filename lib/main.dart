@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:quran/controller/controllers/app_controller.dart';
 import 'package:quran/controller/utils/preferences.dart';
 import 'package:quran/controller/utils/themedata.dart';
+import 'package:quran/view/info/info_screen.dart';
 import 'package:quran/view/landing_screen.dart';
 import 'package:quran/view/quran/quran_screen.dart';
 import 'package:quran/view/setting/setting_screen.dart';
@@ -47,13 +48,14 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: AppLocalizations.supportedLocales,
             locale: Locale.fromSubtags(languageCode: Preferences.getLanguage()),
-            // home: const QiblaScreen(),
+            // home: const InfoScreen(),
             debugShowCheckedModeBanner: false,
             initialRoute: initScreen == 0 || initScreen == null
                 ? onBoardingPage.routeName
                 : LandingScreen.routeName,
             routes: {
               onBoardingPage.routeName: (context) => const onBoardingPage(),
+              InfoScreen.routeName: (context) => InfoScreen(),
               LandingScreen.routeName: (context) => const LandingScreen(),
               QuranScreen.routeName: (context) => const QuranScreen(),
               ContentView.routeName: (context) => ContentView(),
