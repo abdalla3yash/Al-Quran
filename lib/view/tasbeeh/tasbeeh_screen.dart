@@ -96,7 +96,7 @@ class _TasbeehScreenState extends State<TasbeehScreen> {
                   fontSize: provider.valueHolder.toDouble()),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: MediaQuery.of(context).size.height * 0.08,
             ),
             GestureDetector(
               onTap: () {
