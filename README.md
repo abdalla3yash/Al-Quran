@@ -13,6 +13,12 @@ The application of the Holy Qur’an helps you to read the surahs and verses whe
 
 </div>
 
+
+## 📁 Download Now
+
+Get it from <a href="https://drive.google.com/file/d/15qujY1c_akLzAFeZgOd6lqb81b_-HLQd/view?usp=sharing">APK</a>
+
+
 ## 💻 Installation steps
 
 - Updated to `Flutter 3.0.5` Now!
