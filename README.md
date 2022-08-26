@@ -31,6 +31,8 @@ flutter run
 
 <img src="./assets/screenshot/i4.jpg" width=180> <img src="./assets/screenshot/i8.jpg" width=180> <img src="./assets/screenshot/i2.jpg" width=180> <img src="./assets/screenshot/i7.jpg" width=180>
 
+### ☀ Dark Mode Theme
+
 <img src="./assets/screenshot/i6.jpg" width=180> <img src="./assets/screenshot/i7.jpg" width=180> <img src="./assets/screenshot/i8.jpg" width=180> <img src="./assets/screenshot/i9.jpg" width=180>
 
 <img src="./assets/screenshot/i10.jpg" width=180> 
