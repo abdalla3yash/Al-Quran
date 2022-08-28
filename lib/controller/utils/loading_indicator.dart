@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quran/controller/utils/themedata.dart';
 
@@ -9,13 +6,10 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widget = (Platform.isAndroid)
-        ? const CircularProgressIndicator(
-            color: ThemeDataProvider.mainAppColor,
-          )
-        : const CupertinoActivityIndicator(
-            color: ThemeDataProvider.mainAppColor,
-          );
+    const widget = CircularProgressIndicator(
+      color: ThemeDataProvider.mainAppColor,
+    );
+
     return Container(
       alignment: Alignment.center,
       child: widget,

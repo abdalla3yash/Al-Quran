@@ -74,147 +74,153 @@ class _RadioScreenState extends State<RadioScreen> {
                           ThemeDataProvider.imageBackgroundLight),
               fit: BoxFit.cover),
         ),
-        child: Column(
-          children: [
-            Center(
-              child: FutureBuilder<RadioResponse>(
-                future: radioStations,
-                builder: (context, stations) {
-                  if (stations.hasData) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 50),
-                        Text(
-                          AppLocalizations.of(context).radio,
-                          style: TextStyle(
-                            color: provider.isDarkTheme()
-                                ? ThemeDataProvider.textDarkThemeColor
-                                : ThemeDataProvider.textLightThemeColor,
-                            fontSize: 24,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 50,
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.3,
-                            width: MediaQuery.of(context).size.width * 0.95,
-                            child: Lottie.asset('assets/images/radio.json')),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                        ),
-                        // Text(
-                        //   convertUTF8(
-                        //       stations.data!.radios.elementAt(index).name),
-                        //   style: TextStyle(
-                        //     color: provider.isDarkTheme()
-                        //         ? ThemeDataProvider.textDarkThemeColor
-                        //         : ThemeDataProvider.textLightThemeColor,
-                        //     fontSize: 18,
-                        //   ),
-                        // ),
-
-                        Text(
-                          "الإذاعة العامة - اذاعة متنوعة لمختلف القراء",
-                          style: TextStyle(
-                            color: provider.isDarkTheme()
-                                ? ThemeDataProvider.textDarkThemeColor
-                                : ThemeDataProvider.textLightThemeColor,
-                            fontSize: 18,
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const SizedBox(
-                              width: 50,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: FutureBuilder<RadioResponse>(
+                  future: radioStations,
+                  builder: (context, stations) {
+                    if (stations.hasData) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 50),
+                          Text(
+                            AppLocalizations.of(context).radio,
+                            style: TextStyle(
+                              color: provider.isDarkTheme()
+                                  ? ThemeDataProvider.textDarkThemeColor
+                                  : ThemeDataProvider.textLightThemeColor,
+                              fontSize: 24,
                             ),
-                            // Expanded(
-                            //   child: Transform(
-                            //     transform:
-                            //         Matrix4.rotationY(isLTR ? math.pi : 0),
-                            //     alignment: AlignmentDirectional.center,
-                            //     child: IconButton(
-                            //       icon: Icon(
-                            //         Icons.fast_forward_sharp,
-                            //         size: 30,
-                            //         color: provider.isDarkTheme()
-                            //             ? ThemeDataProvider.textDarkThemeColor
-                            //             : ThemeDataProvider.textLightThemeColor,
-                            //       ),
-                            //       onPressed: () {
-                            //         next(
-                            //           stations.data!.radios
-                            //               .elementAt(index)
-                            //               .radio_url,
-                            //           stations.data!.radios.length,
-                            //         );
-                            //       },
-                            //     ),
-                            //   ),
-                            // ),
-                            Expanded(
-                              child: CircleAvatar(
-                                maxRadius: 30,
-                                minRadius: 20,
-                                backgroundColor: ThemeDataProvider.mainAppColor,
-                                child: IconButton(
-                                  icon: Icon(
-                                    isPlaying ? Icons.pause : Icons.play_arrow,
-                                    size: 30,
-                                    color: ThemeDataProvider.textDarkThemeColor,
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.3,
+                              width: MediaQuery.of(context).size.width * 0.95,
+                              child: Lottie.asset('assets/images/radio.json')),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
+                          // Text(
+                          //   convertUTF8(
+                          //       stations.data!.radios.elementAt(index).name),
+                          //   style: TextStyle(
+                          //     color: provider.isDarkTheme()
+                          //         ? ThemeDataProvider.textDarkThemeColor
+                          //         : ThemeDataProvider.textLightThemeColor,
+                          //     fontSize: 18,
+                          //   ),
+                          // ),
+
+                          Text(
+                            "الإذاعة العامة - اذاعة متنوعة لمختلف القراء",
+                            style: TextStyle(
+                              color: provider.isDarkTheme()
+                                  ? ThemeDataProvider.textDarkThemeColor
+                                  : ThemeDataProvider.textLightThemeColor,
+                              fontSize: 18,
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 50,
+                              ),
+                              // Expanded(
+                              //   child: Transform(
+                              //     transform:
+                              //         Matrix4.rotationY(isLTR ? math.pi : 0),
+                              //     alignment: AlignmentDirectional.center,
+                              //     child: IconButton(
+                              //       icon: Icon(
+                              //         Icons.fast_forward_sharp,
+                              //         size: 30,
+                              //         color: provider.isDarkTheme()
+                              //             ? ThemeDataProvider.textDarkThemeColor
+                              //             : ThemeDataProvider.textLightThemeColor,
+                              //       ),
+                              //       onPressed: () {
+                              //         next(
+                              //           stations.data!.radios
+                              //               .elementAt(index)
+                              //               .radio_url,
+                              //           stations.data!.radios.length,
+                              //         );
+                              //       },
+                              //     ),
+                              //   ),
+                              // ),
+                              Expanded(
+                                child: CircleAvatar(
+                                  maxRadius: 30,
+                                  minRadius: 20,
+                                  backgroundColor:
+                                      ThemeDataProvider.mainAppColor,
+                                  child: IconButton(
+                                    icon: Icon(
+                                      isPlaying
+                                          ? Icons.pause
+                                          : Icons.play_arrow,
+                                      size: 30,
+                                      color:
+                                          ThemeDataProvider.textDarkThemeColor,
+                                    ),
+                                    onPressed: () {
+                                      isPlaying
+                                          ? _radioPlayer.pause()
+                                          : _radioPlayer.play();
+                                    },
                                   ),
-                                  onPressed: () {
-                                    isPlaying
-                                        ? _radioPlayer.pause()
-                                        : _radioPlayer.play();
-                                  },
                                 ),
                               ),
-                            ),
-                            // Expanded(
-                            //   child: Transform(
-                            //     transform:
-                            //         Matrix4.rotationY(isLTR ? math.pi : 0),
-                            //     alignment: AlignmentDirectional.center,
-                            //     child: IconButton(
-                            //       icon: Icon(
-                            //         Icons.fast_rewind,
-                            //         size: 30,
-                            //         color: provider.isDarkTheme()
-                            //             ? ThemeDataProvider.textDarkThemeColor
-                            //             : ThemeDataProvider.textLightThemeColor,
-                            //       ),
-                            //       onPressed: () {
-                            //         previous(stations.data!.radios
-                            //             .elementAt(index)
-                            //             .radio_url);
-                            //       },
-                            //     ),
-                            //   ),
-                            // ),
-                            const SizedBox(
-                              width: 50,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                      ],
-                    );
-                  } else if (stations.hasError) {
-                    return const Text("Error loading radio");
-                  }
-                  return const LoadingIndicator();
-                },
+                              // Expanded(
+                              //   child: Transform(
+                              //     transform:
+                              //         Matrix4.rotationY(isLTR ? math.pi : 0),
+                              //     alignment: AlignmentDirectional.center,
+                              //     child: IconButton(
+                              //       icon: Icon(
+                              //         Icons.fast_rewind,
+                              //         size: 30,
+                              //         color: provider.isDarkTheme()
+                              //             ? ThemeDataProvider.textDarkThemeColor
+                              //             : ThemeDataProvider.textLightThemeColor,
+                              //       ),
+                              //       onPressed: () {
+                              //         previous(stations.data!.radios
+                              //             .elementAt(index)
+                              //             .radio_url);
+                              //       },
+                              //     ),
+                              //   ),
+                              // ),
+                              const SizedBox(
+                                width: 50,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      );
+                    } else if (stations.hasError) {
+                      return const Text("Error loading radio");
+                    }
+                    return const LoadingIndicator();
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

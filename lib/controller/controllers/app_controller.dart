@@ -31,8 +31,13 @@ class AppController extends ChangeNotifier {
   }
 
   Future<AdhanModel> fetchAlbum() async {
-    final response = await http
-        .get(Uri.parse(AppConstant.BASE_URI + AppConstant.LOCATION_URI));
+    final response = await http.get(
+      Uri.parse(AppConstant.BASE_URI + AppConstant.LOCATION_URI),
+      headers: {
+        "Accept": "application/json",
+        "Access-Control_Allow_Origin": "*"
+      },
+    );
     if (response.statusCode == 200) {
       return AdhanModel.fromJson(json.decode(response.body));
     } else {

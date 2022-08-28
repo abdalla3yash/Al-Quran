@@ -3,6 +3,7 @@
 Application of Holy book of Muslims, Al-Qur'an. Developed using Flutter
 The application of the Holy Qur’an helps you to read the surahs and verses wherever you go and remember the times of prayer with determining the direction of the qiblah. There is also our Holy Qur’an radio station. We also give you the possibility to glorify God and display hadiths and remembrances
 
+<img src="./assets/screenshot/i.jpg"> 
 
 <div align="center">
 
