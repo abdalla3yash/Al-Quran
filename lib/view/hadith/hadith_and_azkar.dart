@@ -84,7 +84,7 @@ class _HadithAndAzkarScreenState extends State<HadithAndAzkarScreen>
                 child: Column(
                   children: [
                     Text(
-                      AppLocalizations.of(context).title,
+                      AppLocalizations.of(context)!.title,
                       style: const TextStyle(
                         fontSize: 18,
                         color: ThemeDataProvider.textDarkThemeColor,

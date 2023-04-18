@@ -23,7 +23,7 @@ class _QiblaScreenState extends State<QiblaScreen> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context).qibla,
+            AppLocalizations.of(context)!.qibla,
             style: const TextStyle(
                 color: ThemeDataProvider.textDarkThemeColor, fontSize: 18),
           ),
