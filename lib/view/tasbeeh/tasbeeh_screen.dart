@@ -49,7 +49,7 @@ class _TasbeehScreenState extends State<TasbeehScreen> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context).tasbeeh,
+            AppLocalizations.of(context)!.tasbeeh,
             style: const TextStyle(
                 color: ThemeDataProvider.textDarkThemeColor, fontSize: 18),
           ),

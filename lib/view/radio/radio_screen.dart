@@ -50,7 +50,7 @@ class _RadioScreenState extends State<RadioScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).radio,
+          AppLocalizations.of(context)!.radio,
           style: const TextStyle(
             color: ThemeDataProvider.textDarkThemeColor,
             fontSize: 18,
@@ -87,7 +87,7 @@ class _RadioScreenState extends State<RadioScreen> {
                         children: [
                           const SizedBox(height: 50),
                           Text(
-                            AppLocalizations.of(context).radio,
+                            AppLocalizations.of(context)!.radio,
                             style: TextStyle(
                               color: provider.isDarkTheme()
                                   ? ThemeDataProvider.textDarkThemeColor

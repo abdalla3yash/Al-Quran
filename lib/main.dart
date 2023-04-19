@@ -11,6 +11,9 @@ import 'package:quran/view/setting/setting_screen.dart';
 import 'package:quran/view/widgets/azkar_and_hadith_view.dart';
 import 'package:quran/view/widgets/content_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'view/onBoarding/on_boarding_screen.dart';

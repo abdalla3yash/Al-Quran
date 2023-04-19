@@ -78,8 +78,8 @@ class SurahItem extends StatelessWidget {
                       children: [
                         Text(
                           provider.isEnglish()
-                              ? "$verse ${AppLocalizations.of(context).verse}"
-                              : "${arabicNumber.convert(verse)} ${AppLocalizations.of(context).verse}",
+                              ? "$verse ${AppLocalizations.of(context)!.verse}"
+                              : "${arabicNumber.convert(verse)} ${AppLocalizations.of(context)!.verse}",
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,

@@ -70,7 +70,7 @@ class _QuranScreenState extends State<QuranScreen> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      AppLocalizations.of(context).hello,
+                      AppLocalizations.of(context)!.hello,
                       style: TextStyle(
                         color: provider.isDarkTheme()
                             ? ThemeDataProvider.textDarkThemeColor
@@ -187,16 +187,16 @@ class _QuranScreenState extends State<QuranScreen> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List<String> names = [
-                          AppLocalizations.of(context).fajr,
-                          AppLocalizations.of(context).sunrise,
-                          AppLocalizations.of(context).duhr,
-                          AppLocalizations.of(context).asr,
-                          AppLocalizations.of(context).maghrib,
-                          AppLocalizations.of(context).isha,
-                          AppLocalizations.of(context).imsak,
-                          AppLocalizations.of(context).midnight,
-                          AppLocalizations.of(context).firsthird,
-                          AppLocalizations.of(context).lasthird,
+                          AppLocalizations.of(context)!.fajr,
+                          AppLocalizations.of(context)!.sunrise,
+                          AppLocalizations.of(context)!.duhr,
+                          AppLocalizations.of(context)!.asr,
+                          AppLocalizations.of(context)!.maghrib,
+                          AppLocalizations.of(context)!.isha,
+                          AppLocalizations.of(context)!.imsak,
+                          AppLocalizations.of(context)!.midnight,
+                          AppLocalizations.of(context)!.firsthird,
+                          AppLocalizations.of(context)!.lasthird,
                         ];
                         List<String> times = [
                           snapshot.data!.data!.timings!.fajr!,
